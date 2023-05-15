@@ -59,11 +59,11 @@ public class Email {
         }
         for (int i = 0; i < newPassword.length(); i++) {
             char ch = newPassword.charAt(i);
-            if (ch <= 'A' && ch >= 'Z') {
+            if (ch >= 'A' && ch <= 'Z') {
                 upperCase = true;
-            } else if (ch <= 'a' && ch >= 'z') {
+            } else if (ch >= 'a' && ch <= 'z') {
                 lowerCase = true;
-            } else if (ch <= '0' && ch >= '9') {
+            } else if (ch >= '0' && ch <= '9') {
                 digit = true;
             } else {
                 specialCase = true;
