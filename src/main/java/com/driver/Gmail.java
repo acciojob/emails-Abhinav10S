@@ -14,14 +14,14 @@ public class Gmail extends Email {
     private  ArrayList<Triple<Date,String,String>> Inbox ;
     private ArrayList<Triple<Date,String,String>> Trash ;
 
-    private ArrayList<Mail> inbox ;
+
 
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId) ;
         this.inboxCapacity = inboxCapacity ;
         this.Inbox = new ArrayList<Triple<Date, String, String>>() ;
         this.Trash = new ArrayList<Triple<Date, String, String>>() ;
-        this.inbox = new ArrayList<>() ;
+       // this.inbox = new ArrayList<>() ;
     }
 
     public void receiveMail(Date date, String sender, String message){
@@ -35,8 +35,8 @@ public class Gmail extends Email {
               Trash.add(oldestMail);
           }
           Triple <Date , String ,String > mail = Triple.of(date,sender , message);
-          Mail newMail = new Mail (date,sender,message) ;
-          inbox.add(newMail);
+//          Mail newMail = new Mail (date,sender,message) ;
+//          inbox.add(newMail);
           Inbox.add(mail) ;
     }
 
@@ -63,7 +63,7 @@ public class Gmail extends Email {
     public String findLatestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
-        if (inbox.isEmpty()){
+        if (Inbox.isEmpty()){
             return  null ;
         }
         return Inbox.get(Inbox.size()-1).getRight();
@@ -73,7 +73,7 @@ public class Gmail extends Email {
     public String findOldestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
-        if (inbox.isEmpty()){
+        if (Inbox.isEmpty()){
             return null ;
         }
         return Inbox.get(0).getRight();

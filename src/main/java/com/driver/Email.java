@@ -12,13 +12,8 @@ public class Email {
 
     public Email(String emailId, String password) {
         this.emailId = emailId;
-        if(isValid(password)){
-            this.password = password ;
-        }
-        else {
             this.password = "Accio@123";
         }
-    }
 
     public String getEmailId() {
         return emailId;
@@ -40,10 +35,10 @@ public class Email {
                 System.out.println("Password changed Successfully!");
                 this.password = newPassword ;
             } else {
-                System.out.println("The new Password is not valid");
+                System.out.println("The new Password is not valid!");
             }
         } else {
-            System.out.println("The given password does not match password");
+            System.out.println("The given password does not match password!");
         }
     }
 
