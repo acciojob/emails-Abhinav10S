@@ -44,23 +44,19 @@ public class Gmail extends Email {
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
 
-        Triple mailToDelete = null ;
-        for (Triple<Date,String , String> mail : Inbox){
-            if (message.equals(mail.getRight())){
-                mailToDelete = mail ;
-            }
-        }
-//        for (int i = 0 ; i<Inbox.size() ; i++){
-//            if(message.equals(Inbox.get(i).getRight())){
-//                index = i ;
-//                break ;
-//            }
-//        }
+       int index = -1  ;
 
-        if (Objects.nonNull(mailToDelete)){
-            Trash.add(mailToDelete);
-                Inbox.remove(mailToDelete)  ;
-        }
+       for (int i = 0 ; i<Inbox.size() ; i++){
+           if (message.equals(Inbox.get(i).getRight())){
+               index = i ;
+               break ;
+           }
+       }
+
+       if (index == -1){
+           Trash.add(Inbox.get(index));
+           Inbox.remove(index) ;
+       }
 
     }
 
@@ -89,7 +85,7 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
       int cnt = 0 ;
       for (int i = 0 ; i<Inbox.size() ; i++){
-          if (Inbox.get(i).getLeft().compareTo(start)>=0 && Inbox.get(i).getLeft().compareTo(end)<=0){
+          if ((Inbox.get(i).getLeft().compareTo(start)>=0 )&& Inbox.get(i).getLeft().compareTo(end)<=0){
               cnt++ ;
           }
       }
